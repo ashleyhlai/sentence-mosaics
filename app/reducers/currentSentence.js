@@ -4,6 +4,7 @@ import { CameraRoll } from 'react-native';
 import { ActionConst } from 'react-native-router-flux';
 import { captureScreen } from "react-native-view-shot";
 import { words } from '../words';
+import {Router} from 'react-native-router-flux';
 import * as Actions from '../actions/index';
 
 const initialState = {
@@ -20,7 +21,6 @@ const initialState = {
 };
 
 export default function sentences(state = initialState, action) {
-  console.log(action);
   switch (action.type) {
     case Actions.ADD_WORD:
       return {
@@ -63,7 +63,6 @@ export default function sentences(state = initialState, action) {
       })
       .then(
         uri => {
-          console.log("Image saved:", uri);
           CameraRoll.saveToCameraRoll(uri, 'photo');
       },
         error => console.error("Snapshot failed:", error)
